@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { Launch } from "./Components/Launch/Launch";
+import { LaunchInfo } from "./Components/LaunchInfo/LaunchInfo";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Home } from "./Components/Home/Home";
+import "./App.css";
+import {Navbar} from './Components/Navbar/Navbar'
 
 function App() {
+  useEffect(() => {
+    <Launch />;
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/Launch" component={Launch} />
+        <Route exact path="/Launch/:id" component={LaunchInfo} /> 
+        <Route
+          path="*"
+          component={() => {
+            <h2>Page Not found</h2>;
+          }}
+        />
+      </Switch>
+    </Router>
   );
 }
 
