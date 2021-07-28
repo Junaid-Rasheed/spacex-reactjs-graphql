@@ -25,26 +25,28 @@ const InfoData = gql`
 export const LaunchInfo = () => {
   const { idd } = useParams();
 
-  const { loading, data, error } = useQuery(InfoData, {
+  const { loading, data} = useQuery(InfoData, {
     variables: { id: String(idd) },
   });
-  console.log('iddd',idd)
+
+  // React.useEffect(() => {
+  //   refetch();
+  // }, [idd]);
+
+  console.log("iddd", idd);
   console.log("Launch Info", data);
 
-  // if (loading) return <div>loading...</div>;
+  if (loading) return <div>loading...</div>;
 
-  // if (error) return <div>{error}</div>;
 
   return (
     <div>
       <h2>hello</h2>
-    
-      {data &&data.launch[idd] && data.launch[idd].mission_name}
-      {/* {data[idd].mission_name} */}
-      {/* {data &&
-        data.launch &&
-        data.launch.map((d) => <li>{d.launch.mission_name}</li>
-        )} */}
+<h2>
+{/* {data && data.launch?.mission_name} */}
+      {/* {data && data.launch[idd] && data.launch[idd].mission_name} */}
+</h2>
+     
     </div>
   );
 };

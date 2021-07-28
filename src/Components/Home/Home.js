@@ -1,6 +1,5 @@
 import React from "react";
-import { Navbar } from "../Navbar/Navbar";
-
+import './Home.css'
 export const Home = () => {
-  return <div>Welcome to spaceX</div>;
+  return <h3 className="Home-main">Welcome to space-X App</h3>;
 };
