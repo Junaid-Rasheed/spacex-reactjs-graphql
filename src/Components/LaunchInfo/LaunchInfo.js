@@ -1,10 +1,10 @@
-import React from "react";
-import { useQuery, gql } from "@apollo/client";
-import { useParams } from "react-router-dom";
+import React from 'react'
+import { useQuery, gql } from '@apollo/client'
+import { useParams } from 'react-router-dom'
 
 const InfoData = gql`
-  query InfoData($id: String) {
-    launch(idd: $id) {
+  query InfoData($id: ID!) {
+    launch(id: $id) {
       launch_site {
         site_name
       }
@@ -20,33 +20,32 @@ const InfoData = gql`
       details
     }
   }
-`;
+`
 
 export const LaunchInfo = () => {
-  const { idd } = useParams();
+  const { id } = useParams()
 
-  const { loading, data} = useQuery(InfoData, {
-    variables: { id: String(idd) },
-  });
+  const { loading, data } = useQuery(InfoData, {
+    variables: { id: String(id) }
+  })
 
   // React.useEffect(() => {
   //   refetch();
   // }, [idd]);
 
-  console.log("iddd", idd);
-  console.log("Launch Info", data);
+  console.log('iddd', id)
+  console.log('Launch Info', data)
 
-  if (loading) return <div>loading...</div>;
-
+  if (loading) return <div>loading...</div>
 
   return (
     <div>
       <h2>hello</h2>
-<h2>
-{/* {data && data.launch?.mission_name} */}
-      {/* {data && data.launch[idd] && data.launch[idd].mission_name} */}
-</h2>
-     
+      <h2>
+        {/* {data && data.launch?.mission_name} */}
+        {/* {data && data.launch[idd] && data.launch[idd].mission_name} */}
+      </h2>
+
     </div>
-  );
-};
+  )
+}
