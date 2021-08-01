@@ -1,0 +1,13 @@
+.Navbar-main{
+    color: rgb(29, 8, 12);
+   
+  font-size: large;
+}
+
+.Navbar-main:hover{
+    color: rgb(224, 15, 15);
+}
+.Navbar-div{
+    padding-right: 10%;
+    padding-left: 10%;
+}
